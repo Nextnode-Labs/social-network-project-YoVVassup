@@ -1,12 +1,15 @@
 .nav {
     grid-area: n;
     background-color: darkslategrey;
+    padding: 30px;
+    min-height: 100%;
 }
 
-.item {
+.item a{
     color: azure;
+    text-decoration: none;
 }
 
-.item.active {
+.item a.activeLink {
     color: gold;
 }

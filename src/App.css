@@ -1,0 +1,20 @@
+:root {
+}
+
+
+.app-wrapper {
+    /* margin: 0 auto;
+    display: grid;
+    width: 1200px;
+    grid-template-areas: "h h" "n c";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 3px;*/
+    height: 100%;
+}
+
+.app-wrapper-content {
+    /*grid-area: c;*/
+    background-color: azure;
+    min-height: 100%;
+}
