@@ -1,26 +1,24 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {addPostActionCreater, updateNewPostTextActionCreater} from "../../../redux/state";
-import { InputTextarea } from 'primereact/inputtextarea';
+
 import { Button } from 'primereact/button';
+import {InputTextarea} from "primereact/inputtextarea";
 
 
 const MyPosts = (props) => {
 
-    let postsElement = props.posts.map(p => <Post message={p.message} likescount={p.likescount}/>);
-    let newPostElement = React.createRef();
+    let postsElement = props.posts.map( p => <Post  message={p.message} likescount={p.likescount} />);
+    //let newPostElement = React.createRef();
+    let newPostElement = useRef(null);
 
-    let addPost = () => {
-        debugger;
-        props.dispatch(addPostActionCreater());
+    let onAddPost = () => {
+        props.addPost();
     }
 
     let onPostChange = () => {
-        debugger;
         let text = newPostElement.current.value;
-        let action = updateNewPostTextActionCreater(text);
-        props.dispatch(action);
+        props.updateNewPostText(text);
     }
 
     return (
@@ -28,11 +26,17 @@ const MyPosts = (props) => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <InputTextarea rows={2} cols={62} onChange={onPostChange} ref={newPostElement} value={props.newPostText} autoResize />
+                    {/*<textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />*/}
+                    <InputTextarea rows={2} cols={62} value={props.newPostText}
+                               ref={newPostElement}
+                               onChange={(e) => onPostChange(e.target.value)} autoResize />
+
                 </div>
                 <div>
-                    <Button label="Add post" onClick={ addPost } className="p-button-secondary p-m-1 p-p-1 p-m-lg-1 p-b-lg-3"/>
-                    <Button label="Remove" className="p-button-secondary p-m-1 p-p-1 p-m-lg-1 p-b-lg-3"/>
+                    <Button label="Add post" onClick={ onAddPost }
+                            className="p-button-secondary m-1 p-1"/>
+                    <Button label="Remove"
+                            className="p-button-secondary m-1 p-1"/>
                 </div>
             </div>
             <div className={s.posts}>

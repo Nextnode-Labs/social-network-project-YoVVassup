@@ -18,5 +18,10 @@
 
 .messages .message {
     padding: 5px;
+    color: darkorange;
+}
+
+.item a{
+    text-decoration: none;
     color: darkslategrey;
 }
