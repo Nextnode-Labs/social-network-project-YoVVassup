@@ -3,12 +3,12 @@ import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 
 import { Button } from 'primereact/button';
-import {InputTextarea} from "primereact/inputtextarea";
+import {InputTextarea} from 'primereact/inputtextarea';
 
 
 const MyPosts = (props) => {
 
-    let postsElement = props.posts.map( p => <Post  message={p.message} likescount={p.likescount} />);
+    let postsElement = props.posts.map( p => <Post  message={p.message} likescount={p.likescount} key={p.id}/>);
     //let newPostElement = React.createRef();
     let newPostElement = useRef(null);
 
@@ -33,10 +33,10 @@ const MyPosts = (props) => {
 
                 </div>
                 <div>
-                    <Button label="Add post" onClick={ onAddPost }
-                            className="p-button-secondary m-1 p-1"/>
-                    <Button label="Remove"
-                            className="p-button-secondary m-1 p-1"/>
+                    <Button label='Add post' onClick={ onAddPost }
+                            className='p-button-secondary m-1 p-1'/>
+                    <Button label='Remove'
+                            className='p-button-secondary m-1 p-1'/>
                 </div>
             </div>
             <div className={s.posts}>

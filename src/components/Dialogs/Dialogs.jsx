@@ -1,9 +1,9 @@
 import s from './Dialogs.module.css'
-import DialogItem from "./DialogItem/DialogItem";
-import MessageItem from "./MessageItem/MessageItem";
-import React from "react";
+import DialogItem from './DialogItem/DialogItem';
+import MessageItem from './MessageItem/MessageItem';
+import React from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
-import {Button} from "primereact/button";
+import {Button} from 'primereact/button';
 
 const Dialogs = (props) => {
 
@@ -36,8 +36,8 @@ const Dialogs = (props) => {
                                        onChange={onNewMessageChange} autoResize />
                     </div>
                     <div>
-                        <Button label="Send" onClick={ OnSendMessageClick } className="p-button-secondary m-1 p-1"/>
-                        <Button label="Remove" className="p-button-secondary m-1 p-1"/>
+                        <Button label='Send' onClick={ OnSendMessageClick } className='p-button-secondary m-1 p-1'/>
+                        <Button label='Remove' className='p-button-secondary m-1 p-1'/>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
-import React from "react";
-import {sendMessageCreater, updateNewMessageBodyCreater} from "../../redux/dialogs-reduсer";
-import Dialogs from "./Dialogs";
-import {connect} from "react-redux";
+import React from 'react';
+import {sendMessageCreater, updateNewMessageBodyCreater} from '../../redux/dialogs-reduсer';
+import Dialogs from './Dialogs';
+import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => {
     return {

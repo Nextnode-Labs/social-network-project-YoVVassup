@@ -3,17 +3,17 @@ const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 
 let initialState = {
     dialogs: [
-        {id: 1, name: "Dima"},
-        {id: 2, name: "Andrey"},
-        {id: 3, name: "Dasha"},
-        {id: 4, name: "Sasha"},
-        {id: 5, name: "Denis"},
+        {id: 1, name: 'Dima'},
+        {id: 2, name: 'Andrey'},
+        {id: 3, name: 'Dasha'},
+        {id: 4, name: 'Sasha'},
+        {id: 5, name: 'Denis'},
     ],
     messages: [
-        {id: 1, message: "Hi"},
-        {id: 2, message: "How is it-kamasutra?"},
-        {id: 3, message: "Yo"},
-        {id: 4, message: "Hay"},
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'How is it-kamasutra?'},
+        {id: 3, message: 'Yo'},
+        {id: 4, message: 'Hay'},
     ],
     newMessageBody: ""
 }
