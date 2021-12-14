@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css';
-import Header from './components/Header/Header'
+import HeaderContainer from './components/Header/HeaderContainer'
 import Navbar from './components/Navbar/Navbar'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import News from './components/News/News'
@@ -19,7 +19,7 @@ import 'primeflex/primeflex.css';
 const App = (props) => {
     return (
         <div className='app-wrapper'> {/*grid-nogutter // убирает промежутки*/}
-            <div className='mx-0 mt-0 mb-0 p-1 shadow-4' style={{height: '60px'}}><Header /></div>
+            <div className='mx-0 mt-0 mb-0 p-1 shadow-4' style={{height: '60px'}}><HeaderContainer /></div>
             <div className='grid'>
             <div className='col-fixed pr-2' style={{width: '200px'}}><Navbar /></div>
                 <div className='col mt-2'>

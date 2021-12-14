@@ -3,6 +3,8 @@ import s from './Users.module.css';
 import userPhoto from '../../assets/images/user.png';
 import {Button} from 'primereact/button';
 import {NavLink} from "react-router-dom";
+import {Paginator} from 'primereact/paginator';
+import * as axios from "axios";
 
 
 let Users = (props) => {
@@ -37,9 +39,34 @@ let Users = (props) => {
                         </div>
                         <div className='flex justify-content-center'>
                             {u.followed
-                                ? <Button label='Unfollow' onClick={() => (props.unfollow(u.id))}
+                                ? <Button disabled={props.followingInProgress.some(id => id === u.id)} label='Unfollow' onClick={() => {
+                                    props.toggleFollowingProgress(true, u.id);
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                        withCredentials: true,
+                                        headers: {'API-KEY': '369b1e2f-870b-436d-a6ca-6eb805dad9f5'}
+                                    })
+                                        .then(response => {
+                                            if (response.data.resultCode == 0) {
+                                                props.unfollow(u.id)
+                                            }
+                                            props.toggleFollowingProgress(false, u.id);
+                                        });
+                                }}
                                           className='p-button-secondary m-1 p-1'/>
-                                : <Button label='Follow' onClick={() => (props.follow(u.id))}
+                                : <Button disabled={props.followingInProgress.some(id => id === u.id)} label='Follow' onClick={() => {
+                                    props.toggleFollowingProgress(true, u.id);
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {'API-KEY': '369b1e2f-870b-436d-a6ca-6eb805dad9f5'}
+                                    })
+                                        .then(response => {
+                                            if (response.data.resultCode == 0) {
+                                                props.follow(u.id)
+                                            }
+                                            props.toggleFollowingProgress(false, u.id);
+                                        });
+
+                                }}
                                           className='p-button-secondary m-1 p-1'/>}
                         </div>
                     </div>
