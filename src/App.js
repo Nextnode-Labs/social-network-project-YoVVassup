@@ -14,6 +14,7 @@ import 'primereact/resources/themes/nova-alt/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
+import LoginPage from "./components/Login/Login";
 
 
 const App = (props) => {
@@ -32,6 +33,7 @@ const App = (props) => {
                         <Route path={'/music'} render={() => <Music />}/>
                         <Route path={'/users'} render={() => <UsersContainer />}/>
                         <Route path={'/settings'} render={() => <Settings/>}/>
+                        <Route path={'/login'} render={() => <LoginPage/>}/>
                     </div>
                 </div>
             </div>

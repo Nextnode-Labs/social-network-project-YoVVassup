@@ -4,6 +4,7 @@ import MessageItem from './MessageItem/MessageItem';
 import React from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import {Button} from 'primereact/button';
+import {Redirect} from "react-router-dom";
 
 const Dialogs = (props) => {
 
@@ -21,6 +22,9 @@ const Dialogs = (props) => {
         let body = e.target.value;
         props.updateNewMessageBody(body)
     }
+
+    if (!props.isAuth) return <Redirect to={'/login'}/>;
+
     //className={`${s.item}
     return (
         <div className={`${s.dialogs}` + ' grid mt-0'}>
