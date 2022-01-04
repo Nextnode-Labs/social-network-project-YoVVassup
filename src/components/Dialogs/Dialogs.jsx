@@ -5,6 +5,8 @@ import React from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import {Button} from 'primereact/button';
 import {Redirect} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
+import AddMessageForm from "./AddMessageForm/AddMessageForm";
 
 const Dialogs = (props) => {
 
@@ -14,13 +16,8 @@ const Dialogs = (props) => {
     let messagesElements = state.messages.map(m => <MessageItem message={m.message} key={m.id}/> );
     let newMessageBody = state.newMessageBody;
 
-    let OnSendMessageClick = () => {
-        props.sendMessage()
-    }
-
-    let onNewMessageChange = (e) => {
-        let body = e.target.value;
-        props.updateNewMessageBody(body)
+    let addNewMessage = (values) => {
+        props.sendMessage(values.newMessageBody);
     }
 
     if (!props.isAuth) return <Redirect to={'/login'}/>;
@@ -33,21 +30,12 @@ const Dialogs = (props) => {
             </div>
             <div className={`${s.messages}` + ' col mx-1 py-1'}>
                 <div>{messagesElements}</div>
-                <div>
-                    <div className='pt-3'>
-                        <InputTextarea rows={2} cols={62}
-                                       value={newMessageBody}
-                                       onChange={onNewMessageChange} autoResize />
-                    </div>
-                    <div>
-                        <Button label='Send' onClick={ OnSendMessageClick } className='p-button-secondary m-1 p-1'/>
-                        <Button label='Remove' className='p-button-secondary m-1 p-1'/>
-                    </div>
-                </div>
             </div>
+            <AddMessageForm onSubmit={addNewMessage}/>
         </div>
     )
 }
+
 
 export default Dialogs;
 

@@ -3,9 +3,6 @@ import s from './Users.module.css';
 import userPhoto from '../../assets/images/user.png';
 import {Button} from 'primereact/button';
 import {NavLink} from "react-router-dom";
-import {Paginator} from 'primereact/paginator';
-import * as axios from "axios";
-import {usersAPI} from "../../api/api";
 
 
 let Users = (props) => {
