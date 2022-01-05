@@ -15,7 +15,7 @@ let Users = (props) => {
     }
 
     return <div>
-        {/*<Button label="Get Users" onClick={this.getUsers} className="p-button-secondary m-2 p-1"/>*/}
+        {/*<Button label="Get Users" onClick={this.requestUsers} className="p-button-secondary m-2 p-1"/>*/}
         <div>
             {pages.map(p => {
                 return <span key={p.id}
