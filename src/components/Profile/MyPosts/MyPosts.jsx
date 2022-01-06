@@ -1,8 +1,6 @@
 import React, {useRef} from 'react';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
-import { Button } from 'primereact/button';
-import {InputTextarea} from 'primereact/inputtextarea';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreater, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../Common/FormControls/FormsControls";
@@ -31,9 +29,9 @@ let AddNewPostForm = (props) => {
 
 let AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(AddNewPostForm);
 
-const MyPosts = (props) => {
+const MyPosts = React.memo(props => {
 
-    let postsElement = props.posts.map( p => <Post  message={p.message} likescount={p.likescount} key={p.id}/>);
+    let postsElement = props.posts.map(p => <Post message={p.message} likescount={p.likescount} key={p.id}/>);
     //let newPostElement = React.createRef();
     let newPostElement = useRef(null);
 
@@ -50,6 +48,6 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-}
+});
 
 export default MyPosts;
