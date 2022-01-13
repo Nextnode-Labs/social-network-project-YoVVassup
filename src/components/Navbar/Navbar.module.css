@@ -1,8 +1,9 @@
 .nav {
-    grid-area: n;
     background-color: darkslategrey;
     padding: 30px;
-    min-height: 100%;
+    height: 100vh;
+    min-width: 15vh;
+    display: inline-block;
 }
 
 .item a{

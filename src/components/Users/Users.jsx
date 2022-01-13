@@ -1,10 +1,10 @@
 import React from 'react';
 import Paginator from "../Common/Paginator/Paginator";
 import User from "./User";
-
+import s from './Users.module.css'
 
 let Users = ({currentPage, onPageChanged, totalUserCount, pageSize, users, ...props}) => {
-    return <div>
+    return <div className={s.users}>
         {/*<Button label="Get Users" onClick={this.requestUsers} className="p-button-secondary m-2 p-1"/>*/}
         <div>
             <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalItemsCount={totalUserCount} pageSize={pageSize}/>

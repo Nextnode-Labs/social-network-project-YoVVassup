@@ -1,15 +1,16 @@
 import React from 'react'
 import s from './Post.module.css'
-import { Avatar } from 'primereact/avatar';
+import userPhoto from '../../../../assets/images/user.png';
+import {Avatar} from 'primereact/avatar';
 
 const Post = (props) => {
-    //debugger;
     return (
-        <div className={s.item}>
-            {/*<Avatar image='https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg' size='large'/>*/}
-            <img src='https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg'/>
-            {props.message}
+        <div className={`${s.item}` + ' p-2'}>
             <div>
+                <Avatar image={userPhoto} size='large'/>
+                <span className={'m-2'}>{props.message}</span>
+            </div>
+            <div className={''}>
                 <span>like</span> {props.likescount}
             </div>
         </div>

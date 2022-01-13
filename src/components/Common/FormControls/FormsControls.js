@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './FormsControls.module.css'
-import {required} from "../../../utils/validators/validators";
 import {Field} from "redux-form";
+import {InputTextarea} from 'primereact/inputtextarea';
 
 const FormControl = ({input, meta: {touched, error}, children}) => {
     const hasError = touched && error;

@@ -4,25 +4,22 @@ import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreater, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../Common/FormControls/FormsControls";
+import {Button} from "primereact/button";
 
 const maxLength10 = maxLengthCreater(10)
 
 let AddNewPostForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
         <div>
-            <Field name={'newPostText'} component={Textarea}
+            <Field className={s.textarea} name={'newPostText'} component={Textarea}
                    validate={[required, maxLength10]}/>
-            {/*<InputTextarea rows={2} cols={62} value={props.value}*/}
-            {/*               ref={props.ref}*/}
+            {/*<InputTextarea className={'m-2'} name={'newPostText'} rows={2} cols={62}*/}
+            {/*               value={props.value} ref={props.ref}*/}
             {/*               onChange={props.onChange} autoResize/>*/}
         </div>
         <div>
-            {/*<Button label='Add post' onClick={props.onClick}*/}
-            {/*        className='p-button-secondary m-1 p-1'/>*/}
-            {/*<Button label='Remove'*/}
-            {/*        className='p-button-secondary m-1 p-1'/>*/}
-            <button>Add post</button>
-            <button>Remove</button>
+            <Button label='Add post' onClick={props.onClick}
+                    className='p-button-secondary m-1 p-1'/>
         </div>
     </form>;
 }
@@ -41,7 +38,7 @@ const MyPosts = React.memo(props => {
 
     return (
         <div className={s.postsBlock}>
-            <h3>My posts</h3>
+            <div className={'px-6 shadow-8'}>MY POSTS</div>
             <AddNewPostFormRedux onSubmit={onAddPost}/>
             <div className={s.posts}>
                 {postsElement}
