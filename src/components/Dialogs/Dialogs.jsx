@@ -2,10 +2,7 @@ import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
 import React from 'react';
-import { InputTextarea } from 'primereact/inputtextarea';
-import {Button} from 'primereact/button';
 import {Redirect} from "react-router-dom";
-import {Field, reduxForm} from "redux-form";
 import AddMessageForm from "./AddMessageForm/AddMessageForm";
 
 const Dialogs = (props) => {
@@ -22,16 +19,19 @@ const Dialogs = (props) => {
 
     if (!props.isAuth) return <Redirect to={'/login'}/>;
 
-    //className={`${s.item}
     return (
-        <div className={`${s.dialogs}` + ' grid mt-0'}>
-            <div className={`${s.dialogsItems} ${s.item}` + ' col mx-1 font-bold font-italic'}>
-                {dialogsElements}
+        <div className={`${s.dialogs}`}>
+            <div className={'grid mt-0'}>
+                <div className={`${s.dialogsItems} ${s.item}` + ' col mx-1 font-bold font-italic'}>
+                    {dialogsElements}
+                </div>
+                <div className={`${s.messages}` + ' col mx-1 py-1'}>
+                    <div>{messagesElements}</div>
+                </div>
             </div>
-            <div className={`${s.messages}` + ' col mx-1 py-1'}>
-                <div>{messagesElements}</div>
+            <div className={'grid mt-2'}>
+                <AddMessageForm onSubmit={addNewMessage}/>
             </div>
-            <AddMessageForm onSubmit={addNewMessage}/>
         </div>
     )
 }

@@ -6,3 +6,7 @@ export const updateObjectInArray = (items, itemId, objPropName, newObjProps) => 
         return u;
     })
 }
+
+// export const updateObjectInArray = (items, itemId, objPropName, newObjProps) => {
+//     return (items.users || []).map(u =>
+//         (u[objPropName] === itemId) ? {...u, ...newObjProps} : u);

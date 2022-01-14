@@ -2,14 +2,17 @@ import {Field, reduxForm} from "redux-form";
 import React from "react";
 import {maxLengthCreater, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../Common/FormControls/FormsControls";
+import {Button} from "primereact/button";
+import s from './AddMessageForm.module.css'
 
 const maxLength50 = maxLengthCreater(50);
 
 const AddMessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-        <div className='pt-3'>
-            <Field component={Textarea}
+        <div className='px-3'>
+            <Field className={s.textboxArea}
+                   component={Textarea}
                    name={'newMessageBody'}
                    validate={[required, maxLength50]}
                    placeholder={'Enter your message...'}/>
@@ -18,10 +21,7 @@ const AddMessageForm = (props) => {
             {/*               onChange={onNewMessageChange} autoResize />*/}
         </div>
         <div>
-            {/*<Button label='Send' onClick={ OnSendMessageClick } className='p-button-secondary m-1 p-1'/>*/}
-            <button>Send</button>
-            <button>Remove</button>
-            {/*<Button label='Remove' className='p-button-secondary m-1 p-1'/>*/}
+            <Button label='Send' onClick={props.onClick} className='p-button-secondary mt-1 mx-3 p-1'/>
         </div>
     </form>
     )

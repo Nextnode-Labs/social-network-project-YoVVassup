@@ -5,8 +5,7 @@ import s from './Users.module.css'
 
 let Users = ({currentPage, onPageChanged, totalUserCount, pageSize, users, ...props}) => {
     return <div className={s.users}>
-        {/*<Button label="Get Users" onClick={this.requestUsers} className="p-button-secondary m-2 p-1"/>*/}
-        <div>
+        <div className={'m-2'}>
             <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalItemsCount={totalUserCount} pageSize={pageSize}/>
         </div>
         <div>
