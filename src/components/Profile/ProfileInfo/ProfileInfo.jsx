@@ -36,7 +36,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                 {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
                 {editMode
                     ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
-                    : <ProfileData goToEdiMode={() => {
+                    : <ProfileData goToEditMode={() => {
                         setEditMode(true)
                     }} profile={profile} isOwner={isOwner}/>}
                 <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
@@ -45,10 +45,10 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
     )
 }
 
-const ProfileData = ({profile, isOwner, goToEdiMode}) => {
+const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return <div>
         {isOwner && <div>
-            <Button label='edit' onClick={goToEdiMode} className='p-button-secondary m-1 p-1'/>
+            <Button label='edit' onClick={goToEditMode} className='p-button-secondary m-1 p-1'/>
         </div>}
         <div>
             <b>Full name</b>: {profile.fullName}

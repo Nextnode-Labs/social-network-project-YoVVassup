@@ -2,11 +2,11 @@ import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from 'react-dom';
-import VenomContainer from "./App";
+import VenomApp from "./App";
 
 
 ReactDOM.render(
-    <VenomContainer />,
+    <VenomApp />,
     document.getElementById('root'));
 
 

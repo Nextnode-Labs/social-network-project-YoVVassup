@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react';
-import {BrowserRouter, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
@@ -24,8 +24,18 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 
 class App extends React.Component {
+    catchAllUnhandledError = (reason, promise) => {
+        alert('Some error occured')
+        //console.error(promiseRejectionEvent)
+    }
+
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener('unhandledrejection', this.catchAllUnhandledError);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', this.catchAllUnhandledError);
     }
 
     render() {
@@ -39,15 +49,20 @@ class App extends React.Component {
                     <div className='col-fixed pr-2' style={{width: '150px'}}><Navbar/></div>
                     <div className='col mt-2'>
                         <div className={'app-wrapper-content'}>
-                            <Route path={'/dialogs'}
-                                   render={withSuspense(DialogsContainer)}/>
-                            <Route path={'/profile/:userId?'}
-                                   render={withSuspense(ProfileContainer)}/>
-                            <Route path={'/news'} render={() => <News/>}/>
-                            <Route path={'/music'} render={() => <Music/>}/>
-                            <Route path={'/users'} render={() => <UsersContainer/>}/>
-                            <Route path={'/settings'} render={() => <Settings/>}/>
-                            <Route path={'/login'} render={() => <LoginPage/>}/>
+                            <Switch>
+                                <Route path={'/'} exact><Redirect to='/profile'/></Route>
+                                <Route path={'/dialogs'}
+                                       render={withSuspense(DialogsContainer)}/>
+                                <Route path={'/profile/:userId?'}
+                                       render={withSuspense(ProfileContainer)}/>
+                                <Route path={'/news'} render={() => <News/>}/>
+                                <Route path={'/music'} render={() => <Music/>}/>
+                                <Route path={'/users'} render={() => <UsersContainer/>}/>
+                                <Route path={'/settings'} render={() => <Settings/>}/>
+                                <Route path={'/login'} render={() => <LoginPage/>}/>
+                                <Route path={'*'} render={() => <div>404 NOT FOUND</div>}/>
+
+                            </Switch>
                         </div>
                     </div>
                 </div>
@@ -64,7 +79,7 @@ let AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App);
 
-const VenomContainer = (props) => {
+const VenomApp = (props) => {
     return (/*<React.StrictMode>*/
         <BrowserRouter>
             <Provider store={store}>
@@ -74,4 +89,4 @@ const VenomContainer = (props) => {
     /*</React.StrictMode>*/
 }
 
-export default VenomContainer;
+export default VenomApp;
