@@ -3,7 +3,9 @@ import s from './Post.module.css'
 import userPhoto from '../../../../assets/images/user.png';
 import {Avatar} from 'primereact/avatar';
 
+
 const Post = (props) => {
+
     return (
         <div className={`${s.item}` + ' p-2'}>
             <div>

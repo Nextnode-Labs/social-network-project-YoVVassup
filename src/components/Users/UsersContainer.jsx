@@ -11,7 +11,7 @@ import Preloader from "../Common/Preloader/Preloader";
 import {compose} from "redux";
 import {
     getPageSize,
-    getTotalUserCount,
+    getTotalUsersCount,
     getCurrentPage,
     getIsFetching,
     getFollowingInProgress, getUsers
@@ -24,14 +24,14 @@ class UsersContainer extends React.Component {
     }
 
     onPageChanged = (pageNumber) => {
-        const pageSize = this.props;
+        const {pageSize} = this.props;
         this.props.getUsers(pageNumber, pageSize);
     }
 
     render() {
         return <>
             {this.props.isFetching ? <Preloader/> : null}
-            <Users totalUserCount={this.props.totalUserCount}
+            <Users totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
                    onPageChanged={this.onPageChanged}
@@ -48,7 +48,7 @@ let mapStateToProps = (state) => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
-        totalUserCount: getTotalUserCount(state),
+        totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state)

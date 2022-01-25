@@ -1,4 +1,4 @@
-const SEND_MESSAGE = 'SEND-MESSAGE';
+const SEND_MESSAGE = 'SEND_MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -29,6 +29,6 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const sendMessageCreater = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody})
+export const sendMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody})
 
 export default dialogsReducer;

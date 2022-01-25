@@ -2,11 +2,6 @@ import React from 'react'
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
 
-import 'primereact/resources/themes/nova-alt/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import 'primeflex/primeflex.css';
-
 const Navbar = () => {
     return (
         <nav className={s.nav}>
